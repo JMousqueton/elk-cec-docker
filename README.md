@@ -1,2 +1,2 @@
 # ELK-CEC-DOCKER
-ELK Stack in Container for CEC
+ELK Stack with Docker for CEC
