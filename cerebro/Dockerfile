@@ -1,16 +1,17 @@
-ARG CEREBRO_VERSION
-
 FROM openjdk:8-jre-alpine
 
-RUN apk --no-cache add bash
+ARG CEREBRO_VERSION
 
-ADD https://github.com/lmenezes/cerebro/releases/download/v${CEREBRO_VERSION}/cerebro-${CEREBRO_VERSION}.tgz /opt/
-RUN tar zxvf /opt/cerebro-${CEREBRO_VERSION}.tgz -C /opt && mv /opt/cerebro-${CEREBRO_VERSION} /opt/cerebro
-RUN mkdir /opt/cerebro/logs
-
-# remove logback file appender
-RUN sed -i '/<appender-ref ref="FILE"\/>/d' /opt/cerebro/conf/logback.xml
+RUN apk add --no-cache bash \
+ && mkdir -p /opt/cerebro/logs \
+ && wget -qO- https://github.com/lmenezes/cerebro/releases/download/v${CEREBRO_VERSION}/cerebro-${CEREBRO_VERSION}.tgz \
+  | tar xzv --strip-components 1 -C /opt/cerebro \
+ && sed -i '/<appender-ref ref="FILE"\/>/d' /opt/cerebro/conf/logback.xml \
+ && addgroup -g 1000 cerebro \
+ && adduser -D -G cerebro -u 1000 cerebro \
+ && chown -R cerebro:cerebro /opt/cerebro
 
 WORKDIR /opt/cerebro
 EXPOSE 9000
-ENTRYPOINT ["./bin/cerebro"]
+USER cerebro
+ENTRYPOINT [ "/opt/cerebro/bin/cerebro" ]
