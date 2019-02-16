@@ -85,5 +85,45 @@ This will store Elasticsearch data inside `/path/to/storage`.
 Beware of the [unprivileged `elasticsearch` user][esuser] is used within the Elasticsearch image, therefore the mounted data directory must be owned by the uid `1000`.
 
 [esuser]: https://github.com/elastic/elasticsearch-docker/blob/016bcc9db1dd97ecd0ff60c1290e7fa9142f8ddd/templates/Dockerfile.j2#L22
+
+## JVM tuning
+
+By default, both Elasticsearch and Logstash start with [1/4 of the total host
+memory](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html#default_heap_size) allocated to
+the JVM Heap Size.
+
+The startup scripts for Elasticsearch and Logstash can append extra JVM options from the value of an environment
+variable, allowing the user to adjust the amount of memory that can be used by each component:
+
+| Service       | Environment variable |
+|---------------|----------------------|
+| Elasticsearch | ES_JAVA_OPTS         |
+| Logstash      | LS_JAVA_OPTS         |
+
+To accomodate environments where memory is scarce (Docker for Mac has only 2 GB available by default), the Heap Size
+allocation is capped by default to 256MB per service in the `docker-compose.yml` file. If you want to override the
+default JVM configuration, edit the matching environment variable(s) in the `docker-compose.yml` file.
+
+For example, to increase the maximum JVM Heap Size for Logstash:
+
+```yml
+logstash:
+
+  environment:
+    LS_JAVA_OPTS: "-Xmx1g -Xms1g"
+```
+
+### Using a newer stack version
+
+To use a different Elastic Stack version than the one currently available in the repository, simply change the version
+number inside the `.env` file, and rebuild the stack with:
+
+```console
+$ docker-compose build
+$ docker-compose up
+```
+
+**NOTE**: Always pay attention to the [upgrade instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html)
+for each individual component before performing a stack upgrade.
   
 
