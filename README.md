@@ -83,5 +83,7 @@ This will store Elasticsearch data inside `/path/to/storage`.
 
 **NOTE:** 
 Beware of the [unprivileged `elasticsearch` user][esuser] is used within the Elasticsearch image, therefore the mounted data directory must be owned by the uid `1000`.
+
+[esuser]: https://github.com/elastic/elasticsearch-docker/blob/016bcc9db1dd97ecd0ff60c1290e7fa9142f8ddd/templates/Dockerfile.j2#L22
   
 
