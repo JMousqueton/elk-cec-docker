@@ -65,10 +65,6 @@ elasticsearch:
     cluster.name: "my-cluster"
 ```
 
-### How can I scale out the Elasticsearch cluster?
-
-Follow the instructions from the Wiki: [Scaling out
-Elasticsearch](https://github.com/deviantony/docker-elk/wiki/Elasticsearch-cluster)
 
 ## Storage
 
@@ -88,8 +84,7 @@ elasticsearch:
 
 This will store Elasticsearch data inside `/path/to/storage`.
 
-**NOTE:** beware of these OS-specific considerations:
-* **Linux:** the [unprivileged `elasticsearch` user][esuser] is used within the Elasticsearch image, therefore the
+**NOTE:** beware of these considerations the [unprivileged `elasticsearch` user][esuser] is used within the Elasticsearch image, therefore the
   mounted data directory must be owned by the uid `1000`.
   
   
