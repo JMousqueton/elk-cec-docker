@@ -51,7 +51,7 @@ services:
       
   cerebro:
     build:
-      context: cerabro/
+      context: cerebro/
       args:
        CEREBRO_VERSION: $CEREBRO_VERSION   
     ports:
