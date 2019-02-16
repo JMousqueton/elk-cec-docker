@@ -1,3 +1,5 @@
+ARG CEREBRO_VERSION
+
 FROM openjdk:8-jre-alpine
 
 RUN apk --no-cache add bash
