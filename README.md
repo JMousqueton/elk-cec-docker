@@ -24,11 +24,8 @@ Based on the official Docker images from Elastic:
 By default, the stack exposes the following ports:
 
 5000: Logstash TCP input
-
 9200: Elasticsearch HTTP
-
 9300: Elasticsearch TCP transport
-
 5601: Kibana
 
 ## Configuration
@@ -84,8 +81,7 @@ elasticsearch:
 
 This will store Elasticsearch data inside `/path/to/storage`.
 
-**NOTE:** beware of these considerations the [unprivileged `elasticsearch` user][esuser] is used within the Elasticsearch image, therefore the
-  mounted data directory must be owned by the uid `1000`.
-  
+**NOTE:** 
+Beware of the [unprivileged `elasticsearch` user][esuser] is used within the Elasticsearch image, therefore the mounted data directory must be owned by the uid `1000`.
   
 
