@@ -1,6 +1,6 @@
 # ELK-CEC-DOCKER
 
-[![Build Status](https://api.travis-ci.org/jmousqueton/elk-cec-docker.svg?branch=master)](https://travis-ci.org/jmousqueton/elk-cec-docker)
+[![Build Status](https://api.travis-ci.org/JMousqueton/elk-cec-docker.svg?branch=master)](https://travis-ci.org/JMousqueton/elk-cec-docker)
 
 Latest version of the [Elastic stack](https://www.elastic.co/elk-stack) with Docker and Docker Compose.
 
