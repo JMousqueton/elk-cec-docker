@@ -49,15 +49,6 @@ services:
     depends_on:
       - elasticsearch
       
-  cerebro:
-    build:
-      context: cerebro/
-      args:
-       CEREBRO_VERSION: $CEREBRO_VERSION   
-    ports:
-      - "9000:9000"
-    networks:
-      - elk
 
 networks:
 
