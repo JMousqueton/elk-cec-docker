@@ -4,7 +4,9 @@
 
 Latest version of the [Elastic stack](https://www.elastic.co/elk-stack) with Docker and Docker Compose.
 
+Note: Other branche in this project are available:
 
+* cerebro: add [cerebro](https://github.com/lmenezes/cerebro) (listen on port 9000)
 
 ## Requirements
 
@@ -18,9 +20,7 @@ Based on the official Docker images from Elastic:
 
 * [elasticsearch](https://github.com/elastic/elasticsearch-docker)
 * [logstash](https://github.com/elastic/logstash-docker)
-* [kibana](https://github.com/elastic/kibana-docker)
-* [cerebro](https://github.com/lmenezes/cerebro) 
-
+* [kibana](https://github.com/elastic/kibana-docker) 
 
 By default, the stack exposes the following ports:
 
@@ -28,7 +28,6 @@ By default, the stack exposes the following ports:
 * 9200: Elasticsearch HTTP
 * 9300: Elasticsearch TCP transport
 * 5601: Kibana
-* 9000: Cerebro
 
 ## Configuration
 
