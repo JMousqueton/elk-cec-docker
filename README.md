@@ -4,7 +4,7 @@
 
 Latest version of the [Elastic stack](https://www.elastic.co/elk-stack) with Docker and Docker Compose.
 
-Note: Other branche in this project are available:
+Note: Other branche in this project is available:
 
 * cerebro: add [cerebro](https://github.com/lmenezes/cerebro) (listen on port 9000)
 
