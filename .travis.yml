@@ -17,11 +17,6 @@ install:
 before_script:
   # Build images
   - docker-compose build
-
-  # Use built-in users
-  - sed -i 's/\(elasticsearch.username:\) elastic/\1 kibana/g' kibana/config/kibana.yml
-  - sed -i 's/\(xpack.monitoring.elasticsearch.username:\) elastic/\1 logstash_system/g' logstash/config/logstash.yml
-
 script:
   # Compose
   - docker-compose up -d elasticsearch
